@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Page - Smart Attendance</title>
+  <link rel="stylesheet" href="doc.css" />
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <h2>Assiut University of Technology</h2>
+    </div>
+
+    <div class="nav-right">
+
+      <!-- Summary Link -->
+      <a href="summary.html" class="nav-link">Summary</a>
+
+      <!-- Attendance Records (NEW) -->
+      <a href="records.html" class="nav-link">Attendance Records</a>
+
+      <!-- Seating Menu Button -->
+      <button id="seatingBtn" class="nav-btn">Seating ▾</button>
+
+      <!-- Logout -->
+      <button id="logoutBtn">Logout</button>
+    </div>
+
+    <!-- Seating Dropdown -->
+    <div id="seatingMenu" class="seating-menu hidden">
+      <button class="menu-item" id="editDurationBtn">Edit Lecture Duration</button>
+      <button class="menu-item" id="toggleDarkBtn">Toggle Dark Mode</button>
+      <button class="menu-item" id="changePassBtn">Change Doctor Password</button>
+    </div>
+  </nav>
+
+  <!-- Main Page -->
+  <div class="page">
+    <div class="card">
+      <h1>Doctor Page</h1>
+
+      <form id="doctorForm">
+
+        <label>Lecture Name</label>
+        <input type="text" id="lectureName" placeholder="Enter lecture name" required />
+
+        <label>Lecture Password (Auto Generated)</label>
+        <input type="text" id="lecturePass" placeholder="Auto-generated" disabled />
+
+        <label>Lecture Duration</label>
+        <div class="duration-row">
+          <div><input type="number" id="hours" min="0" max="5" placeholder="Hours" /></div>
+          <div><input type="number" id="minutes" min="0" max="59" placeholder="Minutes" /></div>
+        </div>
+
+        <label>Doctor Location</label>
+        <p class="muted" id="locationStatus">Requesting location...</p>
+
+        <button class="primary" type="submit">Start Lecture</button>
+        <div id="message"></div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Popup -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-card">
+      <h2>Lecture Code</h2>
+      <p id="popupCode"></p>
+      <button id="closePopup">Close</button>
+    </div>
+  </div>
+
+  <script src="doc.java"></script>
+</body>
+</html>
