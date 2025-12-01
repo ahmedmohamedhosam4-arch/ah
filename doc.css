@@ -1,0 +1,341 @@
+:root{
+  --blue-600:#007bff;
+  --blue-700:#0056b3;
+  --bg-start:#ffffff;
+  --bg-end:#e6f0ff;
+  --card-bg:#ffffff;
+  --muted:#586069;
+}
+
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  margin:0;
+  padding:0;
+  font-family:"Cairo","Arial",sans-serif;
+  background:linear-gradient(135deg,var(--bg-start),var(--bg-end));
+  color:#033055;
+}
+
+/* NAVBAR */
+.navbar{
+  width:100%;
+  background:white;
+  padding:14px 30px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 4px 18px rgba(0,0,0,0.08);
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:100;
+}
+.nav-left h2{
+  margin:0;
+  font-size:18px;
+  color:var(--blue-700);
+  font-weight:700;
+}
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+/* Summary & Attendance Records Links */
+.nav-link{
+  text-decoration:none;
+  font-weight:700;
+  color:var(--blue-700);
+  padding:8px 12px;
+  border-radius:8px;
+  transition:.15s;
+}
+.nav-link:hover{
+  background:#e6f0ff;
+  transform:scale(1.05);
+}
+
+/* Seating Button */
+.nav-btn{
+  padding:8px 12px;
+  border:none;
+  background:#fbfbfb;
+  color:#033055;
+  font-weight:700;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.15s;
+}
+.nav-btn:hover{
+  background:#e6f0ff;
+  transform:scale(1.05);
+}
+
+/* Logout */
+#logoutBtn{
+  padding:8px 15px;
+  border:none;
+  background:#e63946;
+  color:white;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+/* MAIN CARD */
+.page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding-top:120px;
+}
+
+.card{
+  width:100%;
+  max-width:520px;
+  background:white;
+  border-radius:14px;
+  padding:28px;
+  box-shadow:0 8px 30px rgba(3,48,85,0.08);
+}
+
+h1{
+  margin:0 0 16px 0;
+  text-align:center;
+  color:var(--blue-700);
+}
+
+label{
+  display:block;
+  margin-top:12px;
+  font-weight:600;
+  color:#12436b;
+}
+
+input[type="text"], input[type="number"]{
+  width:100%;
+  padding:10px 12px;
+  margin-top:8px;
+  border-radius:10px;
+  border:1px solid #d1e3fa;
+  background:#fbfeff;
+  font-size:15px;
+}
+
+.duration-row{
+  display:flex;
+  gap:12px;
+}
+
+button.primary{
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  color:white;
+  font-weight:700;
+  background:linear-gradient(135deg,var(--blue-600),var(--blue-700));
+}
+
+.muted{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:6px;
+}
+
+/* MESSAGE */
+#message{
+  margin-top:12px;
+  padding:12px;
+  border-radius:10px;
+  display:none;
+}
+#message.success{
+  display:block;
+  background:#e6fbf0;
+  color:#0b6a3b;
+}
+#message.error{
+  display:block;
+  background:#fff0f0;
+  color:#8b1f1f;
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:200;
+}
+.hidden{
+  display:none;
+}
+.popup-card{
+  background:white;
+  padding:35px;
+  border-radius:14px;
+  width:90%;
+  max-width:350px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.18);
+}
+#popupCode{
+  font-size:28px;
+  font-weight:800;
+  color:var(--blue-700);
+}
+#closePopup{
+  width:100%;
+  padding:10px;
+  background:var(--blue-700);
+  border:none;
+  color:white;
+  cursor:pointer;
+  border-radius:10px;
+  font-weight:700;
+}
+
+/* ========== SEATING MENU (NEW) ========== */
+.seating-menu{
+  position:absolute;
+  right:18px;
+  top:62px;
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 8px 30px rgba(3,48,85,0.12);
+  width:220px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  padding:8px;
+  z-index:500;
+}
+.seating-menu.hidden{
+  display:none;
+}
+.menu-item{
+  background:transparent;
+  border:none;
+  text-align:left;
+  padding:10px 12px;
+  font-weight:700;
+  color:#033055;
+  border-radius:8px;
+  cursor:pointer;
+  transition:background .15s, transform .1s;
+}
+.menu-item:hover{
+  background:#f2f8ff;
+  transform:translateX(4px);
+}
+
+/* ===== Modal Styles ===== */
+.modal-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:600;
+}
+.modal{
+  background:#fff;
+  width:92%;
+  max-width:420px;
+  border-radius:12px;
+  padding:18px;
+  box-shadow:0 12px 40px rgba(3,48,85,0.18);
+}
+.modal h3{
+  margin:0 0 8px 0;
+  color:var(--blue-700);
+}
+.modal .row{
+  margin-top:10px;
+}
+.modal input{
+  width:100%;
+  padding:8px 10px;
+  border-radius:8px;
+  border:1px solid #d1e3fa;
+  font-size:15px;
+}
+.modal .actions{
+  display:flex;
+  gap:10px;
+  margin-top:14px;
+}
+.modal .actions button{
+  flex:1;
+  padding:10px;
+  border-radius:8px;
+  border:none;
+  cursor:pointer;
+  font-weight:700;
+}
+.btn-secondary{
+  background:#f2f6fb;
+  color:#033055;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--blue-600),var(--blue-700));
+  color:#fff;
+}
+
+/* DARK MODE */
+.dark-mode{
+  background:#0f1724 !important;
+  color:#dbeafe !important;
+}
+
+.dark-mode *{
+  color:inherit !important;
+}
+
+.dark-mode html,
+.dark-mode body{
+  background:#0a1322 !important;
+}
+
+.dark-mode .navbar{
+  background:#0d1b2e !important;
+}
+
+.dark-mode .card{
+  background:#0a1528 !important;
+}
+
+.dark-mode input{
+  background:#0a1528 !important;
+  color:#dbeafe !important;
+  border-color:#294266 !important;
+}
+
+.dark-mode .seating-menu{
+  background:#0a1528 !important;
+}
+
+.dark-mode .modal{
+  background:#0d1b2e !important;
+}
+
+.dark-mode .popup-card{
+  background:#0d1b2e !important;
+}
+
+.dark-mode #logoutBtn{
+  background:#b40000 !important;
+}
